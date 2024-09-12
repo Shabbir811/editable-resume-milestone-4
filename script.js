@@ -22,15 +22,18 @@ addEducationBtn.addEventListener('click', function () {
     educationSection.appendChild(educationDiv);
 });
 form.addEventListener('submit', function (event) {
+    var _a;
     event.preventDefault();
     // Collect data from the form
+    var profilePicture = (_a = document.getElementById("profile-pic").files) === null || _a === void 0 ? void 0 : _a[0];
+    var profilePictureUrl = profilePicture ? URL.createObjectURL(profilePicture) : "";
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var phone = document.getElementById('phone').value;
     var address = document.getElementById('address').value;
     var skills = document.getElementById('skills').value;
     // Create a section for the resume output
-    var resumeHTML = "\n        <h1>Editable resume builder</h1> <br/>   \n       <h3>personal infomation:</h3>\n        <p><b>Name: </b> <span contenteditable=\"true\">".concat(name, "</span> </p>\n        <p><b>Email:</b>  <span contenteditable=\"true\">").concat(email, "</span> | <b>Phone: </b>  <span contenteditable=\"true\">").concat(phone, "</span></p>\n        <p><b>Address: </b>  <span contenteditable=\"true\">").concat(address, "</span></p>\n       \n        \n    ");
+    var resumeHTML = "\n        <h1>Editable resume builder</h1> <br/>   \n       <h3>personal infomation:</h3>\n        <img src=".concat(profilePictureUrl, " alt=\"profile-picture\" />\n        <p><b>Name: </b> <span contenteditable=\"true\">").concat(name, "</span> </p>\n        <p><b>Email:</b>  <span contenteditable=\"true\">").concat(email, "</span> | <b>Phone: </b>  <span contenteditable=\"true\">").concat(phone, "</span></p>\n        <p><b>Address: </b>  <span contenteditable=\"true\">").concat(address, "</span></p>\n       \n        \n    ");
     // Loop through all the experience entries
     var experienceEntries = document.querySelectorAll('.experience-entry');
     experienceEntries.forEach(function (entry, index) {
